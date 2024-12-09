@@ -30,6 +30,12 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+/.gitignore/
+/.metadata/
+/analysis_options.yaml/
+/othering.iml/
+/pubspec.lock/
+/README.md/
 
 # Symbolication related
 app.*.symbols
