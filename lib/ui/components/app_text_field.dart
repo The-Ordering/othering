@@ -4,16 +4,18 @@ import 'package:todo_app_ui/ui/colors/colors.dart';
 import 'package:todo_app_ui/ui/typography/typotaphies.dart';
 
 class AppTextField extends StatelessWidget {
-  const AppTextField(
-      {super.key,
-      this.isBlankStyle = false,
-      this.height,
-      this.hintText,
-      this.style,
-      this.hintStyle,
-      this.keyboardType,
-      this.maxLines = 1,
-      this.maxLength});
+  const AppTextField({
+    super.key,
+    this.isBlankStyle = false,
+    this.height,
+    this.hintText,
+    this.style,
+    this.hintStyle,
+    this.keyboardType,
+    this.maxLines = 1,
+    this.maxLength,
+    this.controller,
+  });
 
   final bool isBlankStyle;
   final double? height;
@@ -21,11 +23,13 @@ class AppTextField extends StatelessWidget {
   final TextStyle? style, hintStyle;
   final TextInputType? keyboardType;
   final int? maxLines, maxLength;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      // padding: const EdgeInsets.symmetric(horizontal: 10),
+      // padding: const EdgeI
+      // nsets.symmetric(horizontal: 10),
       margin: const EdgeInsets.symmetric(horizontal: 20),
       width: double.infinity,
       height: height,
@@ -38,6 +42,7 @@ class AppTextField extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(bottom: 4),
         child: TextField(
+          controller: controller,
           keyboardType: keyboardType,
           maxLength: maxLength,
           maxLines: maxLines,

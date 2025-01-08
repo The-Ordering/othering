@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:todo_app_ui/data/controller/note_controller.dart';
 import 'package:todo_app_ui/ui/colors/colors.dart';
 import 'package:todo_app_ui/ui/components/app_text_field.dart';
 import 'package:todo_app_ui/ui/typography/typotaphies.dart';
+import 'package:todo_app_ui/utils/formatter/datetime_formatter.dart';
 
 class FormScreen extends StatelessWidget {
-  const FormScreen({super.key});
+  FormScreen({super.key});
+
+  final noteCtrl = Get.find<NoteController>();
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +23,16 @@ class FormScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               IconButton(
-                onPressed: () => Get.back(),
+                onPressed: () => noteCtrl.toBack(),
                 icon: const Icon(Icons.arrow_back_ios, size: 20),
+              ),
+              Text(
+                DTF(
+                  noteCtrl.isFormAdd.value
+                      ? DateTime.now()
+                      : noteCtrl.note.value.dateTime!,
+                ).toShortHumanReadable().toString(),
+                style: typographies.paragraph(),
               ),
               GestureDetector(
                 onTap: () => Get.back(),
@@ -39,6 +51,7 @@ class FormScreen extends StatelessWidget {
           child: Column(
             children: [
               AppTextField(
+                controller: noteCtrl.txtTitleCtrl,
                 height: 35,
                 isBlankStyle: true,
                 hintText: "title",
@@ -47,9 +60,10 @@ class FormScreen extends StatelessWidget {
                 hintStyle: typographies.title(
                     color: AppColors.darkColor.withOpacity(0.6)),
               ),
-              const AppTextField(
+              AppTextField(
+                controller: noteCtrl.txtContentCtrl,
                 isBlankStyle: true,
-                hintText: "paragraph",
+                hintText: "Start writing...",
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
               ),

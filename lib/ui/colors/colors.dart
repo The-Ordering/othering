@@ -10,4 +10,5 @@ class AppColors {
   static Color categotyColor3 = const Color(0xFF9747FF).withOpacity(0.6);
   static Color categotyColor4 = const Color(0xFFEDBE7D).withOpacity(0.6);
   static Color darkColor = const Color(0xFF1A1A1A);
+  static const Color denger = Color(0xFFFD5151);
 }
