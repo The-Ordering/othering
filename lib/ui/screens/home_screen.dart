@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -31,7 +33,26 @@ class HomeScreen extends StatelessWidget {
           actions: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: SvgPicture.asset('assets/icons/menu-two-line.svg'),
+              child: PopupMenuButton<String>(
+                icon: SvgPicture.asset('assets/icons/menu-two-line.svg'),
+                onSelected: (value) => log(value as num),
+                itemBuilder: (context) => [
+                  PopupMenuItem(
+                    value: "Sort By Name",
+                    child: Text(
+                      "Sort by Name",
+                      style: typographies.label(fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                  PopupMenuItem(
+                    value: "Sort By Date",
+                    child: Text(
+                      "Sort by Date",
+                      style: typographies.label(fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
